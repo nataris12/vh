@@ -6,14 +6,6 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Database\Connection;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-/*use Drupal\Core\Datetime\DateFormatterInterface;
-use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\Entity\EntityListBuilder;
-use Drupal\Core\Entity\EntityStorageInterface;
-use Drupal\Core\Entity\EntityTypeInterface;
-use Drupal\Core\Routing\RedirectDestinationInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;*/
-
 /**
  * VH Activity Log report
  */
@@ -36,7 +28,6 @@ class EntityLogController extends ControllerBase {
   }
 
   /**
-   * TableSortExampleController constructor.
    *
    * @param \Drupal\Core\Database\Connection $database
    *   A database connection object.
