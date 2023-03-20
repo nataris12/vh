@@ -1,0 +1,69 @@
+<?php
+
+/**
+ * @file
+ * Install and uninstall functions for the vh_activity module.
+ *
+ * This file contains the functions required to perform install and
+ * uninstall operations.
+ */
+
+use Drupal\Core\Database\Database;
+
+/**
+ * Implements hook_uninstall().
+ *
+ * @ingroup vh_activity
+ */
+function vh_activity_uninstall() {
+  drupal_uninstall_schema('vh_activity');
+}
+
+/**
+ * Implements hook_schema().
+ *
+ * @ingroup vh_activity
+ */
+function vh_activity_schema() {
+  
+  $schema['vh_activity'] = [
+    'description' => 'Entity activity',
+    'fields' => [
+      'id' => [
+        'description' => 'Avtivity ID.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'timestamp' => [
+        'description' => "Time",
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'bundle' => [
+        'description' => 'Content Type',
+        'type' => 'text',
+        'size' => 'medium',
+      ],
+      'entity_id' => [
+        'description' => 'Entity ID ',
+        'type' => 'int',
+      ],
+      'event' => [
+        'description' => 'Event type (options: insert, update, or delete)',
+        'type' => 'text',
+        'size' => 'medium',
+      ],
+      'uid' => [
+        'description' => 'User ID',
+        'type' => 'int',
+      ],
+           
+      // Fields.
+    ],
+    'primary key' => ['id'],
+  ];
+  return $schema;
+}

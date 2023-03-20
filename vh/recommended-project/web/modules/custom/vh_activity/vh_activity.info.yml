@@ -1,0 +1,7 @@
+name: VH Activity
+description: Provides a custom module to log node activity (create, update, delete)
+core_version_requirement: ^8 || ^9
+type: module
+package: Custom
+
+

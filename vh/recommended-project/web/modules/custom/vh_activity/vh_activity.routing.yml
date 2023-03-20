@@ -1,0 +1,7 @@
+vh_activity.report:
+  path: '/admin/report'
+  defaults:
+    _controller: '\Drupal\vh_activity\Controller\EntityLogController::report'
+    _title: 'Entity Report'
+  requirements:
+    _permission: 'access content'

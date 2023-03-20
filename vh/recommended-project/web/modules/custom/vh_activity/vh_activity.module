@@ -1,0 +1,96 @@
+<?php
+
+/**
+ * @file
+ * Provides a field type allowing the value to be set using tokens.
+ */
+
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\user\Entity\User;
+
+
+function vh_activity_entity_insert(\Drupal\Core\Entity\EntityInterface $entity) {
+  
+  $userid = \Drupal::currentUser()->id();
+
+  if ($entity->getEntityTypeId() == 'node'){
+
+    \Drupal::database()
+      ->insert('vh_activity')
+      ->fields([
+      'bundle' => $entity->bundle(),
+      'entity_id' => $entity->id(),
+      'timestamp' => REQUEST_TIME,
+      'event' => 'create',
+      'uid' => $userid,
+      
+    ])
+      ->execute();
+  }
+}
+
+/*
+function vh_activity_entity_create(\Drupal\Core\Entity\EntityInterface $entity) {
+
+  $userid = \Drupal::currentUser()->id();
+
+  if ($entity->getEntityTypeId() == 'node'){
+
+    \Drupal::database()
+      ->insert('vh_activity')
+      ->fields([
+      'bundle' => $entity->bundle(),
+      'entity_id' => $entity->id(),
+      'timestamp' => REQUEST_TIME,
+      'event' => 'create',
+      'uid' => $userid,
+      
+    ])
+      ->execute();
+  }
+   
+}
+*/
+
+function vh_activity_entity_update($entity) {
+  
+   $userid = \Drupal::currentUser()->id();
+
+  if ($entity->getEntityTypeId() == 'node'){
+
+    \Drupal::database()
+      ->insert('vh_activity')
+      ->fields([
+      'bundle' => $entity->bundle(),
+      'entity_id' => $entity->id(),
+      'timestamp' => REQUEST_TIME,
+      'event' => 'update',
+      'uid' => $userid,
+      
+    ])
+      ->execute();
+  }
+  
+}
+
+
+function vh_activity_entity_delete( $entity) {
+
+   $userid = \Drupal::currentUser()->id();
+
+  if ($entity->getEntityTypeId() == 'node'){
+
+    \Drupal::database()
+      ->insert('vh_activity')
+      ->fields([
+      'bundle' => $entity->bundle(),
+      'entity_id' => $entity->id(),
+      'timestamp' => REQUEST_TIME,
+      'event' => 'delete',
+      'uid' => $userid,
+      
+    ])
+      ->execute();
+  }
+}
